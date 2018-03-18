@@ -12,15 +12,15 @@ import javax.persistence.Table;
 @Table(name = "EMPLOYEE_DETAILS")
 public class Employee {
     @Id
-    @GeneratedValue(generator = "EMPLOYEE_ID_SEQUENCE", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "EMPLOYEE_ID", unique = true)
     private int id;
 
-//    @Column(name = "EMPLOYEE_ID")
-//    private String employeeId;
-
     @Column
     private String name;
+
+    @Column
+    private String email;
 
     @Column
     private String unit;
@@ -44,6 +44,14 @@ public class Employee {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUnit() {
         return unit;
     }
@@ -58,5 +66,15 @@ public class Employee {
 
     public void setBaseLocation(String baseLocation) {
         this.baseLocation = baseLocation;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", unit='" + unit + '\'' +
+                ", baseLocation='" + baseLocation + '\'';
     }
 }

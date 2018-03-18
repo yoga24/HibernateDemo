@@ -23,7 +23,7 @@ public class EmployeeDAO {
         Session session = HibernateSessionUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        String queryString = "from EMPLOYEE where EMPLOYEE_ID = :empId";
+        String queryString = "from EMPLOYEE_DETAILS where EMPLOYEE_ID = :empId";
         Query query = session.createQuery(queryString);
         query.setInteger("empId", id);
         Employee employee = (Employee) query.uniqueResult();
@@ -38,7 +38,7 @@ public class EmployeeDAO {
         Session session = HibernateSessionUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        List<Employee> employees = session.createQuery("from EMPLOYEE").list();
+        List<Employee> employees = session.createQuery("from EMPLOYEE_DETAILS").list();
 
         session.getTransaction().commit();
         session.close();
@@ -60,7 +60,7 @@ public class EmployeeDAO {
         Session session = HibernateSessionUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        String queryString = "from EMPLOYEE where EMPLOYEE_ID = :empId";
+        String queryString = "from EMPLOYEE_DETAILS where EMPLOYEE_ID = :empId";
         Query query = session.createQuery(queryString);
         query.setInteger("empId", id);
         Employee employee = (Employee) query.uniqueResult();
@@ -74,7 +74,7 @@ public class EmployeeDAO {
         Session session = HibernateSessionUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        List<Employee> employees = session.createQuery("from EMPLOYEE").list();
+        List<Employee> employees = session.createQuery("from EMPLOYEE_DETAILS").list();
         for(Employee employee : employees)  {
             session.delete(employee);
         }

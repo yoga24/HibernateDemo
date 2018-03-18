@@ -20,7 +20,8 @@ public class HibernateSessionUtil {
     private static void createSessionFactory() {
         try {
             Configuration hibernateConfig = new Configuration();
-            hibernateConfig.configure("hibernate.cfg.xml");
+//            hibernateConfig.configure("src/main/resources/hibernate.cfg.xml");
+            hibernateConfig.configure();
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(hibernateConfig.getProperties()).build();
 
@@ -28,6 +29,7 @@ public class HibernateSessionUtil {
 
         }catch (Exception exc)  {
             System.out.println("Exception in SessionFactory Creation : "+exc.getMessage());
+            exc.printStackTrace();
         }
     }
 
